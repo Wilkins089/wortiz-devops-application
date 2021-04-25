@@ -43,8 +43,8 @@ spec:
   selector:
     app: devops-test-app
   ports:
-    - port: 3081
-      targetPort: 80
+    - port: 80
+      targetPort: 3081
       protocol: TCP
   type: NodePort
   selector:
