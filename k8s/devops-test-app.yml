@@ -86,13 +86,12 @@ spec:
           ports:
             - containerPort: 3081
 
-
         - image: postgres:9.4-alpine
           name: devops-test-app-db
           imagePullPolicy: Always
           env:
-          - name:   POSTGRES_HOST_AUTH_METHOD
-            value:  trust
+          - name:   POSTGRES_PASSWORD
+            value:  D@mep3rmiso
           - name:   HOSTNAME
             value:  devops-global-postgres
           ports:
@@ -102,7 +101,7 @@ spec:
             - name: devops-test-app-db
               mountPath: /var/lib/postgresql/data
 
- volumes:
-    - name: devops-test-app-db
-      persistentVolumeClaim:
-          claimName: devops-test-app-db
+     volumes:
+        - name: devops-test-app-db
+          persistentVolumeClaim:
+            claimName: devops-test-app-db
