@@ -17,8 +17,7 @@ metadata:
     nginx.ingress.kubernetes.io/configuration-snippet: |
       more_set_headers "x-powered-by: devops-test-app";
       modsecurity_rules '
-        SecRuleEngine On
-      ';
+        SecRuleEngine On';
     cert-manager.io/cluster-issuer: "letsencrypt-production"
 spec:
   tls:
@@ -32,7 +31,7 @@ spec:
           - path: /
             backend:
               serviceName: devops-test-app
-              servicePort: 80              
+              servicePort: 80
 ---
 apiVersion: v1
 kind: Service
@@ -80,7 +79,7 @@ spec:
         app: devops-test-app
     spec:
      containers:
-        - image: 248474610598.dkr.ecr.us-west-1.amazonaws.com/devops-test-app:4e86121
+        - image: 248474610598.dkr.ecr.us-west-1.amazonaws.com/devops-test-app
           name: devops-test-app
           imagePullPolicy: Always
           ports:
@@ -90,8 +89,8 @@ spec:
           name: devops-test-app-db
           imagePullPolicy: Always
           env:
-          - name:   POSTGRES_PASSWORD
-            value:  D@mep3rmiso
+          - name:   POSTGRES_HOST_AUTH_METHOD
+            value:  trust
           - name:   HOSTNAME
             value:  devops-global-postgres
           ports:
