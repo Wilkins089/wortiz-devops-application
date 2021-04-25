@@ -14,7 +14,7 @@ const config = {
     aws_region:  process.env.DEVOPS_TEST_BACKEND_AWS_REGION,
   },
   database: {
-    name: process.env.DEVOPS_TEST_DATABASE_NAME || 'devops_test',
+    name: process.env.DEVOPS_TEST_DATABASE_NAME || 'postgres',
     username: process.env.DEVOPS_TEST_DATABASE_USERNAME || 'postgres',
     password: process.env.DEVOPS_TEST_DATABASE_PASSWORD || '',
     options: {
