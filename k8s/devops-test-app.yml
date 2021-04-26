@@ -80,6 +80,7 @@ spec:
       labels:
         app: devops-test-app
     spec:
+     hostname: devops-global-postgres
      containers:
         - image: 248474610598.dkr.ecr.us-west-1.amazonaws.com/devops-test-app
           name: devops-test-app
@@ -100,8 +101,7 @@ spec:
           
           volumeMounts:
             - name: devops-test-app-db
-              mountPath: /var/lib/postgresql/data
-
+              mountPath: /var/lib/postgresql/db-data
      volumes:
         - name: devops-test-app-db
           persistentVolumeClaim:
