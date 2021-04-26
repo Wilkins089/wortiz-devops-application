@@ -61,7 +61,7 @@ spec:
   resources:
     requests:
       storage: 20Gi
-      
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -94,8 +94,6 @@ spec:
           env:
           - name:   POSTGRES_HOST_AUTH_METHOD
             value:  "trust"
-          - name:   HOSTNAME
-            value:  devops-global-postgres
 
           ports:
             - containerPort: 5432

@@ -4,6 +4,8 @@ services:
 
   devops-test-app:
    container_name: devops-test-app-nodejs
+   depends_on:
+     - devops-global-postgres
    build: . 
    command: >
     sh -c "npm run migrate-up &&
@@ -11,29 +13,27 @@ services:
    tty: true
    ports:
      - 3081:3081
-   links:
-    - devops-global-postgres
 
    networks:
-     - my-networks
+     -  proxynet
 
    volumes:
      - .:/devops-test-app/
      - /devops-test-app/node_modules
 
   devops-global-postgres:
+   hostname: devops-global-postgres
    image: postgres:9.4-alpine
    container_name: devops-test-app-db
    
    environment: 
     - POSTGRES_HOST_AUTH_METHOD=trust
-    - HOSTNAME=devops-global-postgres
 
    ports: 
      - 5432:5432
 
    networks:
-     - my-networks
+     -  proxynet
 
    volumes: 
      - devops-test-app-db:/var/lib/postgresql/data
@@ -42,5 +42,5 @@ volumes:
     devops-test-app-db:
         
 networks:
-   my-networks:
-    external: true
+  proxynet:
+    name: devops-test-app
