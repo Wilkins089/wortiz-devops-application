@@ -7,11 +7,11 @@ const config = {
     start_time: Date.now(),
   },
   aws: {
-    bucket_name: process.env.DEVOPS_TEST_BACKEND_AWS_USER_BUCKET_NAME,
-    access_key:  process.env.DEVOPS_TEST_BACKEND_AWS_ACCESS_KEY,
-    secret_key:  process.env.DEVOPS_TEST_BACKEND_AWS_SECRET_KEY,
+    bucket_name: process.env.DEVOPS_TEST_BACKEND_AWS_USER_BUCKET_NAME || 'devops-test-app-files',
+    access_key:  process.env.DEVOPS_TEST_BACKEND_AWS_ACCESS_KEY || 'AKIATTWR5VOTMCBD377Q',
+    secret_key:  process.env.DEVOPS_TEST_BACKEND_AWS_SECRET_KEY || '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',
     aws_prefix:  process.env.DEVOPS_TEST_BACKEND_AWS_PREFIX,
-    aws_region:  process.env.DEVOPS_TEST_BACKEND_AWS_REGION,
+    aws_region:  process.env.DEVOPS_TEST_BACKEND_AWS_REGION || 'us-west-1',
   },
   database: {
     name: process.env.DEVOPS_TEST_DATABASE_NAME || 'postgres',
