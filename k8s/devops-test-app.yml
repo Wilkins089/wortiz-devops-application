@@ -79,7 +79,7 @@ spec:
         app: devops-test-app
     spec:
      containers:
-        - image: 248474610598.dkr.ecr.us-west-1.amazonaws.com/devops-test-app
+        - image: 248474610598.dkr.ecr.us-west-1.amazonaws.com/devops-test-app:1f76ac3
           name: devops-test-app
           imagePullPolicy: Always
           command: ["sh", "-c", "npm run migrate-up && npm run start"]
@@ -91,9 +91,9 @@ spec:
           imagePullPolicy: Always
           env:
           - name:   POSTGRES_HOST_AUTH_METHOD
-            value:  trust
+            value:  "trust"
           - name:   HOSTNAME
-            value:  devops-global-postgres
+            value:  "localhost"
 
           ports:
             - containerPort: 5432
